@@ -58,10 +58,9 @@ def run_infinite_post_data_loop():
                 user_result = dict(row._mapping)
                 post_data(user_result, 'user')
             
-            print(pin_result)
-            print(geo_result)
-            print(user_result)
-            break
+            print('pin: ', pin_result)
+            print('geo: ', geo_result)
+            print('user: ', user_result)
 
 def post_data(data, topic):
 
@@ -79,7 +78,8 @@ def post_data(data, topic):
     response = requests.request("POST", invoke_url, headers=headers, data=payload)
 
     # print(response.text)
-    print(response.status_code)
+    # print(topic)
+    # print(response.status_code)
 
 
 if __name__ == "__main__":
