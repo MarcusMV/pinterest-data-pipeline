@@ -82,3 +82,5 @@ Create `git_operations.py` file to contain git actions to add, commit, and push 
 `/12c5e9eb47cb_dag.py` contains Airflow DAG that will trigger a Databricks notebook to be run on a 5-minute schedule. DAG is uploaded to `dags` folder on `mwaa-dags-bucket` on Amazon S3.
 
 Contents of folder `/batch_processing_databricks` are local copy of cells of databricks notebook that are triggered on `/12c5e9eb47cb_dag.py` runs. Path specified points at databricks notebook.
+
+*DAG might fail if  notebook contains the commands for mounting the S3 bucket, as this is something that should only be done once. Comment out `dbutils.fs.mount` if necessary.
