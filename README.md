@@ -84,3 +84,47 @@ Create `git_operations.py` file to contain git actions to add, commit, and push 
 Contents of folder `/batch_processing_databricks` are local copy of cells of databricks notebook that are triggered on `/12c5e9eb47cb_dag.py` runs. Path specified points at databricks notebook.
 
 *DAG might fail if  notebook contains the commands for mounting the S3 bucket, as this is something that should only be done once. Comment out `dbutils.fs.mount` if necessary.
+
+## Populate Kinesis Data Streams
+
+Create, describe Kinesis data streams:
+
+`streaming-12c5e9eb47cb-pin` <br>
+`streaming-12c5e9eb47cb-geo` <br>
+`streaming-12c5e9eb47cb-user` <br>
+
+Configure previously created REST API to allow it to invoke Kinesis actions:
+
+- List streams in Kinesis
+- Create, describe and delete streams in Kinesis
+- Add records to streams in Kinesis
+
+In template editors for API request methods, edit input payload for sending data to an AWS Kinesis stream, i.e for resource to add record, `/record`:
+
+    "StreamName": "$input.params('stream-name')",
+    "Data": "$util.base64Encode($input.json('$.Data'))",
+    "PartitionKey": "$input.path('$.PartitionKey')"
+
+Send data to Kinesis streams (i.e `streaming-12c5e9eb47cb-pin`) with invoke URL to add records:
+
+https://gtvq5nm00i.execute-api.us-east-1.amazonaws.com/dev/streams/streaming-12c5e9eb47cb-pin/record
+
+See `/user_posting_emulation_streaming.py` for script to send requests to API, which adds one record at a time from pinterest tables to the streams.
+
+## Read data from Kinesis streams in Databricks and transform data
+
+1. Create cell to read in `authentication_credentials.csv` - see `/stream_processing_data/read_credentials.py`
+2. Read the data from the three streams to notebook - see `/stream_processing_data/read_from_kinesis.py`
+3. Clean streaming data in the same way as batch data - see `/stream_processing_data/clean_...`
+
+## Write streaming data to Delta tables
+
+Once streaming data has been cleaned, save each stream in a Delta Table:
+
+`12c5e9eb47cb_pin_table` <br>
+`12c5e9eb47cb_geo_table` <br>
+`12c5e9eb47cb_user_table` <br>
+
+See method `write_to_delta_table` in `/stream_processing_data/read_from_kinesis.py`
+
+
