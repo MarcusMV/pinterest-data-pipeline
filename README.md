@@ -1,5 +1,15 @@
 # Pinterest Data Pipeline
 
+Pinterest crunches billions of data points every day to decide how to provide more value to their users. This project replicates a similar system using the AWS Cloud. The tasks involved include:
+
+- Configuring an Amazon EC2 instance to use an Apache Kafka client machine
+- Using MSK Connect to connect the MSK cluster to an S3 bucket, such that any data going through the cluster will be automatically saved and stored in a dedicated S3 bucket
+- Building an API to send data to the MSK cluster, which in turn will be stored in an S3 bucket, using a connector we have built
+- Reading data from AWS into Databricks, performing data cleaning and computations using Spark
+- Orchestrating Databricks workloads with DAGs on AWS MWAA
+- Sending streaming data to Kinesis, reading into Databricks, and performing data cleaning and computations using Spark
+- Writing the streaming data to Delta Tables
+
 ## Kafka on EC2
 
 - Configure Kafka client to use AWS IAM authentication to connect to MSK cluster
