@@ -137,4 +137,6 @@ Once streaming data has been cleaned, save each stream in a Delta Table:
 
 See method `write_to_delta_table` in `/stream_processing_data/read_from_kinesis.py`
 
+## Architecture Diagram
 
+![Alt text](CloudPinterestPipeline.png)
