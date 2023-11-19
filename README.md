@@ -64,7 +64,7 @@ This script will return entries from a database containing infrastructure simila
 - Perform data cleaning and computations using Spark on Databricks
 
 ### Getting started with Airflow on Windows
-[Instructions for setting up Apache Airlow in Windows](https://medium.com/international-school-of-ai-data-science/setting-up-apache-airflow-in-windows-using-wsl-dbb910c04ae0)
+[Instructions for setting up Apache Airlow with WSL](https://medium.com/international-school-of-ai-data-science/setting-up-apache-airflow-in-windows-using-wsl-dbb910c04ae0)
 
 Run airflow scheduler in WSL2 instance #1 - activate virtual environment, cd to airflow, run scheduler detached:
 
@@ -153,9 +153,9 @@ In template editors for API request methods, edit input payload for sending data
     "Data": "$util.base64Encode($input.json('$.Data'))",
     "PartitionKey": "$input.path('$.PartitionKey')"
 
-Send data to Kinesis streams (i.e `streaming-12c5e9eb47cb-pin`) with invoke URL to add records:
+Send data to Kinesis streams (i.e `streaming-12c5e9eb47cb-pin`) with invoke URL to add records i.e:<br>
 
-https://gtvq5nm00i.execute-api.us-east-1.amazonaws.com/dev/streams/streaming-12c5e9eb47cb-pin/record
+`https://gtvq5nm00i.execute-api.us-east-1.amazonaws.com/dev/streams/streaming-12c5e9eb47cb-pin/record`
 
 See `/user_posting_emulation_streaming.py` for script to send requests to API, which adds one record at a time from pinterest tables to the streams.
 
