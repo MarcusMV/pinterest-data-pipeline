@@ -16,4 +16,4 @@ def read_from_s3(topic):
 topics = {'pin', 'geo', 'user'}
 dfs_container = {f'df_{key}': read_from_s3(key) for key in topics}
 
-# display(dfs_container['df_pin'])
+display(dfs_container['df_pin'])

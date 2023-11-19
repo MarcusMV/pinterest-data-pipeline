@@ -1,15 +1,9 @@
 import requests
 from time import sleep
 import random
-from multiprocessing import Process
-import boto3
 import json
 import sqlalchemy
 from sqlalchemy import text
-
-
-random.seed(100)
-
 
 class AWSDBConnector:
 
@@ -25,9 +19,7 @@ class AWSDBConnector:
         engine = sqlalchemy.create_engine(f"mysql+pymysql://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DATABASE}?charset=utf8mb4")
         return engine
 
-
 new_connector = AWSDBConnector()
-
 
 def run_infinite_post_data_loop():
     while True:
@@ -75,10 +67,7 @@ def post_data(data, topic):
     headers = {'Content-Type': 'application/json'}
     response = requests.request("PUT", invoke_url, headers=headers, data=payload)
 
-    # print(response.status_code)
-    print(response.text)
-    # print(topic)
-
+    print(response.status_code)
 
 if __name__ == "__main__":
     run_infinite_post_data_loop()

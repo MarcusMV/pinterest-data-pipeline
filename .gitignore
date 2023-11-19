@@ -1,2 +1,4 @@
 12c5e9eb47cb-key-pair.pem
 aws_kinesis_test.py
+.databricks
+.vscode

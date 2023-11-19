@@ -1,15 +1,9 @@
 import requests
 from time import sleep
 import random
-from multiprocessing import Process
-import boto3
 import json
 import sqlalchemy
 from sqlalchemy import text
-
-
-random.seed(100)
-
 
 class AWSDBConnector:
 
@@ -77,9 +71,7 @@ def post_data(data, topic):
     headers = {'Content-Type': 'application/vnd.kafka.json.v2+json'}
     response = requests.request("POST", invoke_url, headers=headers, data=payload)
 
-    # print(response.text)
-    # print(topic)
-    # print(response.status_code)
+    print(response.status_code)
 
 
 if __name__ == "__main__":
