@@ -115,7 +115,7 @@ class DataIngester:
         headers = {'Content-Type': 'application/json'}
         response = requests.request("PUT", invoke_url, headers=headers, data=payload)
 
-        print(response.text)
+        print(response.status_code)
 
 
 
