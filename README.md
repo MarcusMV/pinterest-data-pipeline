@@ -3,6 +3,9 @@
 - [Pinterest Data Pipeline](#pinterest-data-pipeline)
   - [Overview](#overview)
     - [Architecture Diagram](#architecture-diagram)
+    - [Outputs](#outputs)
+      - [Task 2 - Cleaning data about geolocation of posts to df\_geo](#task-2---cleaning-data-about-geolocation-of-posts-to-df_geo)
+      - [Task 8 - Find the median follower count for different age groups](#task-8---find-the-median-follower-count-for-different-age-groups)
   - [Features](#features)
   - [Setup](#setup)
     - [Kafka on EC2](#kafka-on-ec2)
@@ -21,10 +24,17 @@
 
 ## Overview
 
-Pinterest crunches billions of data points every day to decide how to provide more value to their users. This project replicates a similar system using the AWS Cloud.
+Pinterest crunches billions of data points every day to decide how to provide more value to their users. This project replicates a similar system using AWS Cloud that take in those events and runs them through two separate pipelines. One for computing real-time metrics on streaming data, and another for computing metrics on historical data.
 
 ### Architecture Diagram
 !["CloudPinterestPipeline"](assets/CloudPinterestPipeline.png)
+
+### Outputs
+#### Task 2 - Cleaning data about geolocation of posts to df_geo
+<img src="assets/Task_2.png" alt="Task_2" width="750"/>
+
+#### Task 8 - Find the median follower count for different age groups
+<img src="assets/Task_8.png" alt="Task_8" width="750"/>
 
 ## Features
 
